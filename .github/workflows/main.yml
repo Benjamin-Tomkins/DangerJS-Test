@@ -6,8 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: DangerJS
-        uses: danger/danger-js@9.1.8
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install yarn dependencies
+        run: |
+          yarn global danger
+          yarn danger init
+          yarn danger ci --dangerfile ..DangerJS-Test/dangerfile.js
