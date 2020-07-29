@@ -14,5 +14,4 @@ jobs:
       - name: Install yarn dependencies
         run: |
           yarn global add danger
-          yarn danger init
           yarn danger ci --dangerfile ..DangerJS-Test/dangerfile.js
