@@ -13,6 +13,6 @@ jobs:
           node-version: "12.x"
       - name: Install yarn dependencies
         run: |
-          yarn global danger
+          yarn global add danger
           yarn danger init
           yarn danger ci --dangerfile ..DangerJS-Test/dangerfile.js
