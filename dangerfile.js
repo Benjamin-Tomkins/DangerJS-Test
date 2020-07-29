@@ -1,7 +1,10 @@
 import { danger, message, warn, fail } from "danger";
 
-const your_file = danger.git.fileMatch("your_file_path")
-
-if (your_file.edited) {
-  message("Please write a data migration to run the changes")
+// Add a CHANGELOG entry for app changes
+const hasChangelog = danger.git.modified_files.includes("changelog.md");
+const isTrivial = (danger.github.pr.body + danger.github.pr.title).includes(
+  "#trivial"
+);
+if (!hasChangelog && !isTrivial) {
+  warn("Please add a changelog entry for your changes.");
 }
