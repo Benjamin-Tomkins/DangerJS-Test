@@ -6,5 +6,5 @@ const isTrivial = (danger.github.pr.body + danger.github.pr.title).includes(
   "#trivial"
 );
 if (!hasChangelog && !isTrivial) {
-  warn("Please add a changelog entry for your changes.");
+  fail("Please add a changelog entry for your changes.");
 }
